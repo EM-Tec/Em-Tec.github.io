@@ -1,6 +1,6 @@
 +++
 author = "毛哥EM"
-title = "部屬 nodejs 專案到虛擬機上 - pm2, nginx, cloudflare DNS, SSL 一次上手"
+title = "部署 nodejs 專案到虛擬機上 - pm2, nginx 一次上手"
 date = "2024-05-31"
 tags = [
     "Linux",
