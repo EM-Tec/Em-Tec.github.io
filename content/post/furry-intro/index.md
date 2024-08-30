@@ -1,7 +1,7 @@
 +++
 author = "毛哥EM"
 title = "甚麼是福瑞 (Furry)？深入探討不獸控制的獸人角色與獸圈活動"
-date = "2024-08-31"
+date = "2024-08-30"
 tags = []
 categories = ["軟體分享"]
 thumbnail = "https://emtech.cc/post/furry-intro/thumbnail.webp"
