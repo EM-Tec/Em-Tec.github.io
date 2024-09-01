@@ -56,13 +56,15 @@ https://docs.google.com/spreadsheets/d/1m0F6pOejN-ldKFIrFwssmoEPB3EPDmSQJKEPr9T8
 
 ## 步驟二：建立 Google Apps Script
 
-現在，我們需要建立一個 Google Apps Script，用於向 Google Sheets 文件中添加和讀取數據。請在網址輸入[script.new](https://script.new/)，進入 Google Apps Script 編輯器。接著貼上我的這一串程式。請把第一行的雙引號裡面換成剛才複製的ID。
+現在，我們需要建立一個 Google Apps Script，用於向 Google Sheets 文件中添加和讀取數據。請在網址輸入[script.new](https://script.new/)，進入 Google Apps Script 編輯器。**刪除所有預設的範例內容。** 接著貼上我的這一串程式。請把第一行的雙引號裡面換成剛才複製的ID。
 
 ```js
 const id = "1m0F6pOejN-ldKFIrFwssmoEPB3EPDmSQJKEPr9T88-E"
 
 function doGet(e){let t=e.parameter,a=SpreadsheetApp.openById(id).getSheets();switch(t.type){case"call":if(!t.time)return ContentService.createTextOutput(!1);return a[0].appendRow([t.name,t.time,t.remain]),ContentService.createTextOutput(!0);case"list":var r=a[1].getRange(2,1,a[1].getLastRow()-1,a[1].getLastColumn()).getValues().filter(e=>""!==e[0]).map(e=>({name:e[0],left:e[2]}));return ContentService.createTextOutput(JSON.stringify(r)).setMimeType(ContentService.MimeType.JSON);case"search":var[n,...r]=a[0].getDataRange().getValues();let[u,i,p]=n,s=n.indexOf(u),m=n.indexOf(i),c=n.indexOf(p),l=r.filter(e=>e[s]===t.name).map(e=>({time:e[m],left:e[c]}));return ContentService.createTextOutput(JSON.stringify(l)).setMimeType(ContentService.MimeType.JSON);case"new":let f=a[1].getLastRow()+1;return a[1].appendRow([t.name,`=COUNTIF('紀錄'!A:A,A${f})`,`=D${f}-B${f}`]),ContentService.createTextOutput(!0);default:return ContentService.createTextOutput("別亂撞我～")}}
 ```
+
+所以你的檔案第一行應該是 `const id"` 開頭，不是 `function myFunction() {`。
 
 我們需要把它部屬成網頁，請點擊左上角的部屬，新增部屬作業，選擇部屬為網頁應用程式。執行身分選自己(我)，誰可以存取選所有人。接著點擊部屬，複製網頁應用程式網址。比如說:
 
